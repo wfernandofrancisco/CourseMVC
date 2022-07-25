@@ -37,7 +37,8 @@ namespace CourseMVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<CourseMVCContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("CourseMVCContext")));
+                    options.UseMySql(Configuration.GetConnectionString("CourseMVCContext"), builder =>
+                        builder.MigrationsAssembly("CourseMVC")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
