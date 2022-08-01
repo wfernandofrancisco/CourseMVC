@@ -8,9 +8,15 @@ namespace CourseMVC.Models
     public class Seller
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "{0} obrigatório")]
+        [StringLength(200,MinimumLength = 3, ErrorMessage = "Campo deve ter de 3 a 200 caracteres")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "{0} obrigatório")]
+        [EmailAddress(ErrorMessage = "Enter a valid email")]
+        [StringLength(200, MinimumLength = 3, ErrorMessage = "Campo deve ter de 3 a 200 caracteres")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double BaseSalary { get; set; }
